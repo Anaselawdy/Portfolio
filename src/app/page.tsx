@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { CaseStudiesGrid } from '../components/CaseStudiesGrid';
+import { DesignGallery } from '../components/DesignGallery';
 import { CaseStudyModal } from '../components/CaseStudyModal';
 import { DesignSystemPlayground } from '../components/DesignSystemPlayground';
 import { DesignProcess } from '../components/DesignProcess';
@@ -37,6 +38,8 @@ export default function Home() {
         />
 
         <CaseStudiesGrid onSelectCaseStudy={(study) => setActiveCaseStudy(study)} />
+
+        <DesignGallery />
 
         <DesignSystemPlayground />
 

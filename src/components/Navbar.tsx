@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['work', 'design-system', 'process', 'experience', 'about', 'contact'];
+      const sections = ['work', 'gallery', 'design-system', 'process', 'experience', 'about', 'contact'];
       const scrollPosition = window.scrollY + 140;
 
       for (const section of sections) {
@@ -39,11 +39,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   }, []);
 
   const navLinks = [
-    { name: 'Selected Projects', href: '#work', id: 'work' },
+    { name: 'Projects', href: '#work', id: 'work' },
+    { name: 'Design Gallery', href: '#gallery', id: 'gallery' },
     { name: 'Design Lab', href: '#design-system', id: 'design-system' },
     { name: 'Process', href: '#process', id: 'process' },
     { name: 'Experience', href: '#experience', id: 'experience' },
-    { name: 'About', href: '#about', id: 'about' },
   ];
 
   return (
@@ -86,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`relative px-4 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
+                  className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                     isActive ? 'text-white font-semibold' : 'text-zinc-400 hover:text-zinc-200'
                   }`}
                 >
