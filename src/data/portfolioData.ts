@@ -17,7 +17,7 @@ export const PERSONAL_INFO = {
   resumeUrl: 'https://drive.google.com/file/d/1-2wYdJzjU3xiwKBLo7oVgUfpCGRaZNWV/view',
   socialLinks: {
     github: 'https://github.com/Anaselawdy/Portfolio',
-    linkedin: 'https://www.linkedin.com/in/a-ramzy/',
+    linkedin: 'https://www.linkedin.com/in/anas-elawdy-a67678111/',
     email: 'mailto:anaselawdy14@gmail.com',
     phone: 'tel:+201017037847',
   },
