@@ -1,4 +1,4 @@
-export type ProjectCategory = 'all' | 'fintech' | 'saas-ai' | 'design-systems' | 'mobile';
+export type ProjectCategory = 'all' | 'fb-loyalty' | 'ai-dashboard' | 'mobile-health' | 'pos-enterprise';
 
 export interface Metric {
   label: string;
@@ -15,6 +15,8 @@ export interface CaseStudy {
   year: string;
   role: string;
   duration: string;
+  region: string;
+  platform: string;
   summary: string;
   heroImage: string;
   tags: string[];
@@ -27,7 +29,7 @@ export interface CaseStudy {
   };
   research: {
     targetAudience: string;
-    keyInsights: { title: string; desc: string }[];
+    keyInsights: { title: string; desc: string; impact?: string }[];
     problemStatements: string[];
   };
   designProcess: {
@@ -44,6 +46,7 @@ export interface CaseStudy {
   impact: {
     headline: string;
     stats: Metric[];
+    learnings: string[];
     quote?: {
       text: string;
       author: string;
@@ -71,10 +74,4 @@ export interface Testimonial {
   avatarText: string;
   content: string;
   project: string;
-}
-
-export interface DesignToken {
-  name: string;
-  value: string;
-  type: 'color' | 'typography' | 'spacing' | 'radius';
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, FileText, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
               <span className="text-zinc-400 font-normal text-xs">{PERSONAL_INFO.title}</span>
             </div>
             <p className="text-zinc-500 text-xs max-w-md">
-              Designed with obsessive craft, systems thinking, and zero slop. Powered by Next.js App Router and React 19.
+              Helping startups and companies create intuitive, high-converting digital experiences. Collaborations across UAE, Saudi Arabia, Iraq &amp; Korea.
             </p>
           </div>
 
@@ -70,26 +70,38 @@ export const Footer: React.FC = () => {
             &copy; {new Date().getFullYear()} Anas Elawdy. All rights reserved.
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
             <a
-              href="https://github.com/Anaselawdy/Portfolio"
+              href={PERSONAL_INFO.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-emerald-400 transition-colors flex items-center gap-1"
+            >
+              <FileText className="w-3 h-3" />
+              <span>Resume</span>
+              <ArrowUpRight className="w-3 h-3" />
+            </a>
+            <a
+              href={PERSONAL_INFO.socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-zinc-300 transition-colors"
             >
-              Source on GitHub
+              LinkedIn
+            </a>
+            <a
+              href={PERSONAL_INFO.socialLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-zinc-300 transition-colors"
+            >
+              GitHub Source
             </a>
             <a
               href="#work"
               className="hover:text-zinc-300 transition-colors"
             >
-              Selected Work
-            </a>
-            <a
-              href="#contact"
-              className="hover:text-zinc-300 transition-colors"
-            >
-              Contact
+              Projects
             </a>
           </div>
         </div>

@@ -1,25 +1,32 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, MapPin, Clock, ArrowUpRight } from 'lucide-react';
+import { Mail, Copy, Check, Send, ArrowUpRight, FileText } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const ContactSection: React.FC = () => {
-  const [copied, setCopied] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [selectedProjectType, setSelectedProjectType] = useState<string>('Fintech App');
+  const [selectedProjectType, setSelectedProjectType] = useState<string>('F&B Loyalty & App');
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    budget: '$15k - $30k',
+    budget: '$10k - $25k',
     message: '',
   });
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2500);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(PERSONAL_INFO.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2500);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -28,7 +35,7 @@ export const ContactSection: React.FC = () => {
     setFormSubmitted(true);
   };
 
-  const projectTypes = ['Fintech & Payments', 'Design System Architecture', 'AI & SaaS Interface', 'Mobile App (iOS/Android)', 'Design Advisory / Sprint'];
+  const projectTypes = ['F&B & Loyalty Mobile App', 'POS & Operations Dashboard', 'AI & Complex SaaS Interface', 'Mobile App (iOS/Android)', 'Product Design Advisory'];
 
   return (
     <section id="contact" className="py-24 border-t border-white/[0.08] relative">
@@ -37,13 +44,13 @@ export const ContactSection: React.FC = () => {
         <div className="space-y-3 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-emerald-400">
             <Mail className="w-3.5 h-3.5" />
-            <span>START A CONVERSATION</span>
+            <span>DIRECT COLLABORATION</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-            Let&apos;s build something extraordinary.
+            Let&apos;s build intuitive product experiences together.
           </h2>
           <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
-            Have a project in mind or need a senior product designer to elevate your team&apos;s UX and design systems? Reach out directly.
+            Looking for a senior product designer with proven impact across the GCC and global tech ecosystems? Get in touch directly.
           </p>
         </div>
 
@@ -56,7 +63,7 @@ export const ContactSection: React.FC = () => {
               <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 space-y-1">
                 <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-semibold">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>CURRENT AVAILABILITY</span>
+                  <span>CURRENT STATUS</span>
                 </div>
                 <p className="text-xs text-zinc-300">
                   {PERSONAL_INFO.availabilityText}
@@ -66,7 +73,7 @@ export const ContactSection: React.FC = () => {
               {/* Direct Email with 1-Click Copy */}
               <div className="space-y-2">
                 <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
-                  Direct Email Address
+                  Direct Email
                 </div>
                 <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-white/10">
                   <span className="text-xs sm:text-sm font-mono text-white truncate mr-2">
@@ -77,7 +84,7 @@ export const ContactSection: React.FC = () => {
                     className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-medium shrink-0"
                     title="Copy email to clipboard"
                   >
-                    {copied ? (
+                    {copiedEmail ? (
                       <>
                         <Check className="w-3.5 h-3.5 text-emerald-400" />
                         <span className="text-emerald-400 font-mono text-[11px]">Copied!</span>
@@ -92,58 +99,76 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Location & Timezone info */}
-              <div className="space-y-3 pt-2 text-xs text-zinc-400">
-                <div className="flex items-center gap-2.5">
-                  <MapPin className="w-4 h-4 text-zinc-500" />
-                  <span>Location: {PERSONAL_INFO.location}</span>
+              {/* Direct Phone */}
+              <div className="space-y-2">
+                <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
+                  Phone &amp; WhatsApp
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <Clock className="w-4 h-4 text-zinc-500" />
-                  <span>Response Time: Typically within 12 hours</span>
+                <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-950 border border-white/10">
+                  <span className="text-xs sm:text-sm font-mono text-white truncate mr-2">
+                    {PERSONAL_INFO.phone}
+                  </span>
+                  <button
+                    onClick={handleCopyPhone}
+                    className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-medium shrink-0"
+                    title="Copy phone to clipboard"
+                  >
+                    {copiedPhone ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="text-emerald-400 font-mono text-[11px]">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        <span className="font-mono text-[11px]">Copy</span>
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
 
-              {/* Social Channels */}
-              <div className="pt-4 border-t border-white/10 space-y-2">
+              {/* Social Channels & Resume */}
+              <div className="pt-2 border-t border-white/10 space-y-2">
                 <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
-                  Design Profiles &amp; Code
+                  Professional Profiles &amp; Resume
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <a
                     href={PERSONAL_INFO.socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg bg-zinc-950/80 border border-white/5 hover:border-white/20 text-zinc-300 hover:text-white flex items-center justify-between transition-colors"
+                    className="p-2.5 rounded-xl bg-zinc-950/80 border border-white/5 hover:border-white/20 text-zinc-300 hover:text-white flex items-center justify-between transition-colors font-mono"
                   >
                     <span>LinkedIn</span>
                     <ArrowUpRight className="w-3 h-3 text-zinc-500" />
                   </a>
                   <a
+                    href={PERSONAL_INFO.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-xl bg-zinc-950/80 border border-white/5 hover:border-white/20 text-emerald-400 hover:text-emerald-300 flex items-center justify-between transition-colors font-mono"
+                  >
+                    <span className="flex items-center gap-1">
+                      <FileText className="w-3 h-3" />
+                      <span>Resume (PDF)</span>
+                    </span>
+                    <ArrowUpRight className="w-3 h-3" />
+                  </a>
+                  <a
                     href={PERSONAL_INFO.socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg bg-zinc-950/80 border border-white/5 hover:border-white/20 text-zinc-300 hover:text-white flex items-center justify-between transition-colors"
+                    className="p-2.5 rounded-xl bg-zinc-950/80 border border-white/5 hover:border-white/20 text-zinc-300 hover:text-white flex items-center justify-between transition-colors font-mono"
                   >
                     <span>GitHub</span>
                     <ArrowUpRight className="w-3 h-3 text-zinc-500" />
                   </a>
                   <a
-                    href={PERSONAL_INFO.socialLinks.dribbble}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg bg-zinc-950/80 border border-white/5 hover:border-white/20 text-zinc-300 hover:text-white flex items-center justify-between transition-colors"
+                    href={`mailto:${PERSONAL_INFO.email}`}
+                    className="p-2.5 rounded-xl bg-zinc-950/80 border border-white/5 hover:border-white/20 text-zinc-300 hover:text-white flex items-center justify-between transition-colors font-mono"
                   >
-                    <span>Dribbble</span>
-                    <ArrowUpRight className="w-3 h-3 text-zinc-500" />
-                  </a>
-                  <a
-                    href={PERSONAL_INFO.socialLinks.figma}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg bg-zinc-950/80 border border-white/5 hover:border-white/20 text-zinc-300 hover:text-white flex items-center justify-between transition-colors"
-                  >
-                    <span>Figma Community</span>
+                    <span>Send Email</span>
                     <ArrowUpRight className="w-3 h-3 text-zinc-500" />
                   </a>
                 </div>
@@ -159,18 +184,18 @@ export const ContactSection: React.FC = () => {
                   <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto">
                     <Check className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">Inquiry Received!</h3>
+                  <h3 className="text-xl font-bold text-white">Message Dispatched!</h3>
                   <p className="text-sm text-zinc-400 max-w-md mx-auto leading-relaxed">
-                    Thank you, {formData.name}. Anas has received your project briefing and will follow up with you directly at {formData.email}.
+                    Thank you, {formData.name}. Anas has received your briefing and will reply directly to {formData.email}.
                   </p>
                   <button
                     onClick={() => {
                       setFormSubmitted(false);
-                      setFormData({ name: '', email: '', budget: '$15k - $30k', message: '' });
+                      setFormData({ name: '', email: '', budget: '$10k - $25k', message: '' });
                     }}
                     className="px-4 py-2 rounded-xl bg-zinc-800 text-xs font-semibold text-zinc-200 hover:bg-zinc-700 transition-colors"
                   >
-                    Send Another Note
+                    Send Another Inquiry
                   </button>
                 </div>
               ) : (
@@ -178,7 +203,7 @@ export const ContactSection: React.FC = () => {
                   {/* Project Type Picker */}
                   <div className="space-y-2">
                     <label className="text-xs font-mono text-zinc-400 uppercase tracking-wider block">
-                      What are you looking to build?
+                      Project Focus Area
                     </label>
                     <div className="flex flex-wrap gap-2">
                       {projectTypes.map((type) => (
@@ -207,7 +232,7 @@ export const ContactSection: React.FC = () => {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Alex Henderson"
+                        placeholder="e.g. Sarah Jenkins"
                         className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-white/10 text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
@@ -219,7 +244,7 @@ export const ContactSection: React.FC = () => {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="alex@company.com"
+                        placeholder="sarah@company.com"
                         className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-white/10 text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
@@ -227,27 +252,27 @@ export const ContactSection: React.FC = () => {
 
                   {/* Budget Selector */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-zinc-400">Estimated Project Budget</label>
+                    <label className="text-xs font-mono text-zinc-400">Estimated Project Scope / Budget</label>
                     <select
                       value={formData.budget}
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-white/10 text-xs text-white focus:outline-none focus:border-emerald-400"
                     >
-                      <option value="<$15k">&lt; $15k (Sprint / Advisory)</option>
-                      <option value="$15k - $30k">$15k - $30k (Core Product / MVP)</option>
-                      <option value="$30k - $60k">$30k - $60k (Comprehensive Platform / Design System)</option>
-                      <option value="$60k+">$60k+ (Enterprise Multi-Product Engagement)</option>
+                      <option value="<$10k">&lt; $10k (Design Sprint / UX Audit)</option>
+                      <option value="$10k - $25k">$10k - $25k (Core Mobile App / MVP Design)</option>
+                      <option value="$25k - $50k">$25k - $50k (Full Platform &amp; Design System)</option>
+                      <option value="Full-Time Remote">Full-Time Remote Role (Senior / Lead)</option>
                     </select>
                   </div>
 
                   {/* Message */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-zinc-400">Project Goals &amp; Timeline</label>
+                    <label className="text-xs font-mono text-zinc-400">Project Goals &amp; Context</label>
                     <textarea
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Briefly describe your product goals, team structure, and target launch timeframe..."
+                      placeholder="Tell me about your product, challenges, target users, and expected timeline..."
                       className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-white/10 text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-emerald-400 resize-none"
                     />
                   </div>
@@ -255,7 +280,7 @@ export const ContactSection: React.FC = () => {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-xs transition-colors flex items-center justify-center gap-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                    className="w-full py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-xs transition-colors flex items-center justify-center gap-2 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-95"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Send Project Inquiry</span>
