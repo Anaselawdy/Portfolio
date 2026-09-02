@@ -9,7 +9,8 @@ import { useGSAP } from '@gsap/react';
  */
 export const smoothScrollTo = (
   target: string | number | Element,
-  offsetY = 85
+  offsetY = 85,
+  duration = 1.0
 ) => {
   if (typeof window === 'undefined') return;
 
