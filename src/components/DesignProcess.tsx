@@ -1,9 +1,45 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { Search, GitBranch, LayoutGrid, Layers, CheckCircle, BarChart3, ArrowRight } from 'lucide-react';
+import { gsap, useGSAP } from '../lib/gsap';
 
 export const DesignProcess: React.FC = () => {
+  const containerRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // Header entrance
+      gsap.from('.process-header-item', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          once: true,
+        },
+        y: 20,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.7,
+        ease: 'power3.out',
+      });
+
+      // Cards staggered entrance
+      gsap.from('.process-card', {
+        scrollTrigger: {
+          trigger: '.process-cards-grid',
+          start: 'top 82%',
+          once: true,
+        },
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.7,
+        ease: 'power3.out',
+      });
+    },
+    { scope: containerRef }
+  );
+
   const steps = [
     {
       num: '01',
@@ -43,30 +79,30 @@ export const DesignProcess: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-24 border-t border-white/[0.08] relative">
+    <section ref={containerRef} id="process" className="py-24 border-t border-white/[0.08] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="space-y-3 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-emerald-400">
+          <div className="process-header-item inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-emerald-400">
             <CheckCircle className="w-3.5 h-3.5" />
             <span>METHODOLOGY &amp; PHILOSOPHY</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <h2 className="process-header-item text-3xl sm:text-4xl font-bold tracking-tight text-white">
             How I design scalable, high-impact products.
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
+          <p className="process-header-item text-zinc-400 text-sm sm:text-base leading-relaxed">
             A structured framework designed to move from ambiguity to shipping production-ready interfaces fast without sacrificing depth or craft.
           </p>
         </div>
 
         {/* Process Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="process-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.num}
-                className="p-6 sm:p-8 rounded-2xl bg-zinc-900/40 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between space-y-6 group"
+                className="process-card p-6 sm:p-8 rounded-2xl bg-zinc-900/40 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between space-y-6 group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -107,7 +143,7 @@ export const DesignProcess: React.FC = () => {
           })}
 
           {/* Callout Card */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950/30 border border-emerald-500/20 flex flex-col justify-between space-y-6">
+          <div className="process-card p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950/30 border border-emerald-500/20 flex flex-col justify-between space-y-6">
             <div className="space-y-3">
               <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
                 CORE PRINCIPLE

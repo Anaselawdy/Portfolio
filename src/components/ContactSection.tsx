@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Mail, Copy, Check, Send, ArrowUpRight, FileText } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { gsap, useGSAP } from '../lib/gsap';
 
 export const ContactSection: React.FC = () => {
+  const containerRef = useRef<HTMLElement>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -16,6 +18,50 @@ export const ContactSection: React.FC = () => {
     budget: '$10k - $25k',
     message: '',
   });
+
+  useGSAP(
+    () => {
+      // Header entrance
+      gsap.from('.contact-header-item', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          once: true,
+        },
+        y: 20,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.7,
+        ease: 'power3.out',
+      });
+
+      // Contact columns entrance
+      gsap.from('.contact-col-left', {
+        scrollTrigger: {
+          trigger: '.contact-grid-wrap',
+          start: 'top 82%',
+          once: true,
+        },
+        x: -24,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.contact-col-right', {
+        scrollTrigger: {
+          trigger: '.contact-grid-wrap',
+          start: 'top 82%',
+          once: true,
+        },
+        x: 24,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+    },
+    { scope: containerRef }
+  );
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
@@ -38,26 +84,26 @@ export const ContactSection: React.FC = () => {
   const projectTypes = ['F&B & Loyalty Mobile App', 'POS & Operations Dashboard', 'AI & Complex SaaS Interface', 'Mobile App (iOS/Android)', 'Product Design Advisory'];
 
   return (
-    <section id="contact" className="py-24 border-t border-white/[0.08] relative">
+    <section ref={containerRef} id="contact" className="py-24 border-t border-white/[0.08] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="space-y-3 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-emerald-400">
+          <div className="contact-header-item inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-emerald-400">
             <Mail className="w-3.5 h-3.5" />
             <span>DIRECT COLLABORATION</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <h2 className="contact-header-item text-3xl sm:text-4xl font-bold tracking-tight text-white">
             Let&apos;s build intuitive product experiences together.
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
+          <p className="contact-header-item text-zinc-400 text-sm sm:text-base leading-relaxed">
             Looking for a senior product designer with proven impact across the GCC and global tech ecosystems? Get in touch directly.
           </p>
         </div>
 
         {/* Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="contact-grid-wrap grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Direct Contact Card (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="contact-col-left lg:col-span-5 space-y-6">
             <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-white/10 space-y-8">
               {/* Availability Banner */}
               <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 space-y-1">
@@ -177,7 +223,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Right: Interactive Project Inquiry Form (7 cols) */}
-          <div className="lg:col-span-7">
+          <div className="contact-col-right lg:col-span-7">
             <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/40 border border-white/10 space-y-6">
               {formSubmitted ? (
                 <div className="py-12 text-center space-y-4">
