@@ -26,8 +26,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
+      // Check if at the bottom of the page
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80) {
+        setActiveSection('contact');
+        return;
+      }
+
       // Reset to hero when near the top
-      if (window.scrollY < 200) {
+      if (window.scrollY < 180) {
         setActiveSection('hero');
         return;
       }
@@ -38,8 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // If the section's top has reached the upper viewport area
-          if (rect.top <= 240) {
+          if (rect.top <= 220) {
             setActiveSection(section);
             return;
           }
@@ -55,16 +60,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    smoothScrollTo(href, 80, 1.0);
+    smoothScrollTo(href, 85);
   };
 
   const handleContactClick = () => {
     setMobileMenuOpen(false);
-    if (onOpenContact) {
-      onOpenContact();
-    } else {
-      smoothScrollTo('#contact', 80, 1.0);
-    }
+    smoothScrollTo('#contact', 85);
   };
 
   return (

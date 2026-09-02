@@ -1,52 +1,17 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, QrCode, UtensilsCrossed, Bot, Baby, Store, ArrowRight } from 'lucide-react';
 import { CASE_STUDIES } from '../data/portfolioData';
 import { CaseStudy, ProjectCategory } from '../types/portfolio';
-import { gsap, useGSAP } from '../lib/gsap';
 
 interface CaseStudiesGridProps {
   onSelectCaseStudy: (caseStudy: CaseStudy) => void;
 }
 
 export const CaseStudiesGrid: React.FC<CaseStudiesGridProps> = ({ onSelectCaseStudy }) => {
-  const sectionRef = useRef<HTMLElement>(null);
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>('all');
-
-  useGSAP(
-    () => {
-      // Header entrance
-      gsap.from('.cs-header-item', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          once: true,
-        },
-        y: 20,
-        opacity: 0,
-        stagger: 0.08,
-        duration: 0.5,
-        ease: 'power3.out',
-      });
-
-      // Cards batch reveal
-      gsap.from('.cs-card-item', {
-        scrollTrigger: {
-          trigger: '.cs-cards-grid',
-          start: 'top 85%',
-          once: true,
-        },
-        y: 28,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power3.out',
-      });
-    },
-    { scope: sectionRef, dependencies: [selectedCategory] }
-  );
 
   const categories: { id: ProjectCategory; label: string }[] = [
     { id: 'all', label: 'All Projects' },
@@ -222,7 +187,7 @@ export const CaseStudiesGrid: React.FC<CaseStudiesGridProps> = ({ onSelectCaseSt
   };
 
   return (
-    <section ref={sectionRef} id="work" className="py-24 border-t border-zinc-800 relative">
+    <section id="work" className="py-24 border-t border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">

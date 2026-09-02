@@ -1,14 +1,12 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Mail, Copy, Check, Send, ArrowUpRight, Phone, MessageSquare, Clock, ShieldCheck, Globe, Sparkles } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { gsap, useGSAP } from '../lib/gsap';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 
 export const ContactSection: React.FC = () => {
-  const containerRef = useRef<HTMLElement>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -23,50 +21,6 @@ export const ContactSection: React.FC = () => {
     budget: '$10k - $25k',
     message: '',
   });
-
-  useGSAP(
-    () => {
-      // Header entrance
-      gsap.from('.contact-header-item', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-          once: true,
-        },
-        y: 24,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power3.out',
-      });
-
-      // Contact columns entrance
-      gsap.from('.contact-col-left', {
-        scrollTrigger: {
-          trigger: '.contact-grid-wrap',
-          start: 'top 82%',
-          once: true,
-        },
-        x: -25,
-        opacity: 0,
-        duration: 0.7,
-        ease: 'power3.out',
-      });
-
-      gsap.from('.contact-col-right', {
-        scrollTrigger: {
-          trigger: '.contact-grid-wrap',
-          start: 'top 82%',
-          once: true,
-        },
-        x: 25,
-        opacity: 0,
-        duration: 0.7,
-        ease: 'power3.out',
-      });
-    },
-    { scope: containerRef }
-  );
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
@@ -120,7 +74,7 @@ export const ContactSection: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} id="contact" className="py-24 border-t border-zinc-800 relative">
+    <section id="contact" className="py-24 border-t border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="space-y-4 max-w-3xl">

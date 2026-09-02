@@ -1,45 +1,9 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { GitBranch, Search, LayoutGrid, Layers, BarChart3, ArrowRight, ShieldCheck } from 'lucide-react';
-import { gsap, useGSAP } from '../lib/gsap';
 
 export const DesignProcess: React.FC = () => {
-  const containerRef = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      // Header entrance
-      gsap.from('.process-header-item', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-          once: true,
-        },
-        y: 24,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power3.out',
-      });
-
-      // Cards staggered entrance
-      gsap.from('.process-card', {
-        scrollTrigger: {
-          trigger: '.process-cards-grid',
-          start: 'top 82%',
-          once: true,
-        },
-        y: 30,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.7,
-        ease: 'power3.out',
-      });
-    },
-    { scope: containerRef }
-  );
-
   const steps = [
     {
       num: '01',
@@ -84,7 +48,7 @@ export const DesignProcess: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} id="process" className="py-24 border-t border-zinc-800 relative">
+    <section id="process" className="py-24 border-t border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="space-y-4 max-w-3xl">
