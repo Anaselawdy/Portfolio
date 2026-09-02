@@ -12,6 +12,7 @@ import { Testimonials } from '../components/Testimonials';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
 import { CaseStudy } from '../types/portfolio';
+import { smoothScrollTo } from '../lib/gsap';
 
 export default function Home() {
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudy | null>(null);
@@ -31,10 +32,7 @@ export default function Home() {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    smoothScrollTo('#' + sectionId, 70, 1.2);
   };
 
   return (

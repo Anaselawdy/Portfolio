@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Menu, X, FileText, Sparkles } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { smoothScrollTo } from '../lib/gsap';
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -61,7 +62,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           {/* Brand Mark */}
           <a
             href="#"
-            className="group flex items-center gap-3 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-xl p-1"
+            onClick={(e) => {
+              e.preventDefault();
+              smoothScrollTo(0, 0, 1.2);
+            }}
+            className="group flex items-center gap-3 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-xl p-1 cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center font-bold text-sm tracking-tight text-white group-hover:border-zinc-700 transition-colors">
               AE
@@ -85,7 +90,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`relative px-4 py-2 text-xs font-medium rounded-full transition-colors ${
+                  onClick={(e) => {
+                    e.preventDefault();
+                    smoothScrollTo(link.href, 70, 1.2);
+                  }}
+                  className={`relative px-4 py-2 text-xs font-medium rounded-full transition-colors cursor-pointer ${
                     isActive ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'
                   }`}
                 >
@@ -157,8 +166,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-sm font-medium text-zinc-200 hover:text-white hover:bg-zinc-900 transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMobileMenuOpen(false);
+                    smoothScrollTo(link.href, 70, 1.2);
+                  }}
+                  className="px-4 py-3 rounded-xl text-sm font-medium text-zinc-200 hover:text-white hover:bg-zinc-900 transition-colors cursor-pointer"
                 >
                   {link.name}
                 </a>

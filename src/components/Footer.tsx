@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUp, FileText, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { smoothScrollTo } from '../lib/gsap';
 
 export const Footer: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string>('');
@@ -25,7 +26,7 @@ export const Footer: React.FC = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    smoothScrollTo(0, 0, 1.2);
   };
 
   return (
@@ -99,7 +100,11 @@ export const Footer: React.FC = () => {
             </a>
             <a
               href="#work"
-              className="hover:text-white transition-colors font-medium"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo('#work', 70, 1.2);
+              }}
+              className="hover:text-white transition-colors font-medium cursor-pointer"
             >
               Case Studies
             </a>
