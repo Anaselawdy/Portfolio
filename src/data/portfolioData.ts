@@ -13,7 +13,7 @@ export const PERSONAL_INFO = {
   yearsExperience: '4+',
   regionsCollaborated: 'UAE, Saudi Arabia, Iraq & Korea',
   industries: 'F&B, Loyalty, E-commerce, AI Dashboards, Real Estate, Health & POS',
-  bio: "I'm a Product UI/UX designer with over 4 years of experience with a strong foundation in product design, currently working remotely with Qoodz on an F&B and loyalty system. My work blends design thinking, user research, and practical UI skills to craft impactful solutions across industries like F&B, e-commerce, real estate, education, and delivery services. Having collaborated across the UAE, Saudi Arabia, Iraq, and Korea—and backed by a unique analytical background in Law—I approach product strategy and user friction with structured logic and high-craft execution.",
+  bio: "I'm a Product UI/UX designer with over 4 years of experience with a strong foundation in product design, currently working remotely with Qoodz on an F&B and loyalty system. My work blends design thinking, user research, and practical UI skills to craft impactful solutions across industries like F&B, e-commerce, real estate, education, and delivery services. Having collaborated across the UAE, Saudi Arabia, Iraq, and Korea, and backed by a unique analytical background in Law, I approach product strategy and user friction with structured logic and high-craft execution.",
   resumeUrl: 'https://drive.google.com/file/d/1-2wYdJzjU3xiwKBLo7oVgUfpCGRaZNWV/view',
   socialLinks: {
     github: 'https://github.com/Anaselawdy/Portfolio',
@@ -26,7 +26,7 @@ export const PERSONAL_INFO = {
 export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'qoodz-app',
-    title: 'Qoodz — Mobile App & Merchant Dashboard Ecosystem',
+    title: 'Qoodz: Mobile App & Merchant Dashboard Ecosystem',
     client: 'Qoodz F&B Technologies',
     category: 'fb-loyalty',
     categoryLabel: 'F&B & Loyalty System',
@@ -69,7 +69,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         {
           title: 'Cultural Context & Arabic Typography',
-          desc: 'Localization required more than translation—spacing, conversational tone, and visual hierarchy were tailored for Saudi user comfort.',
+          desc: 'Localization required more than translation: spacing, conversational tone, and visual hierarchy were tailored for Saudi user comfort.',
           impact: 'Medium',
         },
       ],
@@ -141,7 +141,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: 'qoodz-digital-menu',
-    title: 'Qoodz — Digital Menu Conversion & Discovery Experience',
+    title: 'Qoodz: Digital Menu Conversion & Discovery Experience',
     client: 'Qoodz F&B Technologies',
     category: 'fb-loyalty',
     categoryLabel: 'F&B Conversion UX',
@@ -243,7 +243,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: 'pwc-ai-dashboard',
-    title: 'PWC AI Management Dashboard — Intelligent Time & Workflow Optimizer',
+    title: 'PWC AI Management Dashboard: Intelligent Time & Workflow Optimizer',
     client: 'PWC AI Initiatives / Enterprise Productivity',
     category: 'ai-dashboard',
     categoryLabel: 'AI & Enterprise SaaS',
@@ -345,7 +345,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: 'childroo-tracker',
-    title: 'ChildRoo — Smart Baby Tracker & Daily Routine Management',
+    title: 'ChildRoo: Smart Baby Tracker & Daily Routine Management',
     client: 'ChildRoo Parenting Technologies',
     category: 'mobile-health',
     categoryLabel: 'Health & Parenting Mobile App',
@@ -378,7 +378,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       keyInsights: [
         {
           title: 'Parents Seek Speed, Not Exploration',
-          desc: 'When opening the app during midnight feeds, parents want to tap once and lock the phone—every second counts.',
+          desc: 'When opening the app during midnight feeds, parents want to tap once and lock the phone: every second counts.',
           impact: 'Critical',
         },
         {
@@ -447,7 +447,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: 'qompos-pos-manager',
-    title: 'Qompos — POS Manager "Command Center" Mobile App',
+    title: 'Qompos: POS Manager "Command Center" Mobile App',
     client: 'Qompos Retail & F&B Systems',
     category: 'pos-enterprise',
     categoryLabel: 'POS & Operations Cockpit',
@@ -485,7 +485,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         },
         {
           title: 'Hero Metric Priority',
-          desc: 'When surveying owners: "If you could see only ONE number on your screen, what would it be?" — 94% answered Net Revenue.',
+          desc: 'When surveying owners: "If you could see only ONE number on your screen, what would it be?" - 94% answered Net Revenue.',
           impact: 'High',
         },
         {
@@ -551,7 +551,7 @@ export const CASE_STUDIES: CaseStudy[] = [
 
 export const EXPERIENCE_LIST: Experience[] = [
   {
-    period: '2024 — Present',
+    period: '2024 - Present',
     role: 'Product UI/UX Designer',
     company: 'Qoodz (F&B & Loyalty Platform)',
     location: 'Remote • Saudi Arabia & UAE',
@@ -565,7 +565,7 @@ export const EXPERIENCE_LIST: Experience[] = [
     skills: ['F&B UX', 'Loyalty Systems', 'Arabic-First Design', 'Merchant Dashboards', 'Gamification'],
   },
   {
-    period: '2023 — 2024',
+    period: '2023 - 2024',
     role: 'Product Designer & UX Researcher',
     company: 'Qompos & Autonomous Projects',
     location: 'Remote • GCC & International',
@@ -579,7 +579,7 @@ export const EXPERIENCE_LIST: Experience[] = [
     skills: ['POS Systems', 'AI Interfaces', 'Mobile Health', 'User Research', 'Data Visualization'],
   },
   {
-    period: '2021 — 2023',
+    period: '2021 - 2023',
     role: 'Product & UI/UX Designer',
     company: 'Digital Solutions & Client Collaborations',
     location: 'UAE, KSA, Iraq & Korea (Remote)',

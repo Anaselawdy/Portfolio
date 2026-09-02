@@ -83,7 +83,7 @@ export const ExperienceTimeline: React.FC = () => {
             Career &amp; Experience Leadership
           </h2>
           <p className="exp-header-item text-zinc-200 text-base leading-relaxed">
-            8+ years scaling product design teams, shipping enterprise fintech engines, and architecting multi-brand design systems across the GCC and international markets.
+            4+ years scaling product design, shipping enterprise fintech engines, and architecting multi-brand design systems across the GCC and international markets.
           </p>
         </div>
 

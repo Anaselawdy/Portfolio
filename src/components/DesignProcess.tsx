@@ -88,9 +88,6 @@ export const DesignProcess: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-            <span>HOW I WORK</span>
-          </div>
           <h2 className="process-header-item text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
             How I turn product ambiguity into high-revenue shipped software.
           </h2>

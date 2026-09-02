@@ -340,7 +340,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                       </p>
                       <div className="text-xs text-zinc-300 font-medium">
                         <span className="font-bold text-white">{caseStudy.impact.quote.author}</span>
-                        <span> — {caseStudy.impact.quote.role}</span>
+                        <span> - {caseStudy.impact.quote.role}</span>
                       </div>
                     </div>
                   )}
@@ -362,7 +362,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                     className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 text-xs font-semibold transition-colors"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
-                    <span>Previous: {prevStudy.title.split('—')[0]}</span>
+                    <span>Previous: {prevStudy.title.split(':')[0]}</span>
                   </button>
 
                   <button
@@ -372,7 +372,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                     }}
                     className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 text-xs font-semibold transition-colors"
                   >
-                    <span>Next: {nextStudy.title.split('—')[0]}</span>
+                    <span>Next: {nextStudy.title.split(':')[0]}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </>

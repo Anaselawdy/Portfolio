@@ -27,7 +27,7 @@ export interface GalleryItem {
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'qoodz-loyalty-home',
-    title: 'Qoodz — Gamified Foodie Discovery & Streaks',
+    title: 'Qoodz: Gamified Foodie Discovery & Streaks',
     project: 'Qoodz F&B Loyalty',
     category: 'mobile',
     categoryLabel: 'Mobile App (iOS)',
@@ -115,7 +115,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'qoodz-qr-modal',
-    title: 'Qoodz — 1-Tap QR In-Store Redemption & Feedback',
+    title: 'Qoodz: 1-Tap QR In-Store Redemption & Feedback',
     project: 'Qoodz F&B Loyalty',
     category: 'interaction',
     categoryLabel: 'Micro-Interaction',
@@ -172,7 +172,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'qoodz-digital-menu-screen',
-    title: 'Qoodz — Arabic-First Digital Menu Flow',
+    title: 'Qoodz: Arabic-First Digital Menu Flow',
     project: 'Qoodz Digital Menu',
     category: 'mobile',
     categoryLabel: 'Mobile App (iOS)',
@@ -256,7 +256,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'pwc-ai-focus-hud',
-    title: 'PWC AI — Autonomous Focus Shield & Deep Work HUD',
+    title: 'PWC AI: Autonomous Focus Shield & Deep Work HUD',
     project: 'PWC AI Management',
     category: 'dashboard',
     categoryLabel: 'Enterprise Dashboard',
@@ -319,7 +319,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'childroo-quick-action-screen',
-    title: 'ChildRoo — 1-Tap "Quick Action" Routine Logger',
+    title: 'ChildRoo: 1-Tap "Quick Action" Routine Logger',
     project: 'ChildRoo Parenting App',
     category: 'mobile',
     categoryLabel: 'Mobile App (iOS)',
@@ -391,7 +391,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'qompos-hero-revenue-card',
-    title: 'Qompos — "At-A-Glance" Hero Net Revenue Cockpit',
+    title: 'Qompos: "At-A-Glance" Hero Net Revenue Cockpit',
     project: 'Qompos POS Manager',
     category: 'dashboard',
     categoryLabel: 'POS Operations',
@@ -454,7 +454,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'qompos-hourly-radar',
-    title: 'Qompos — Hourly Peak Sales Radar & Staff Shift Planner',
+    title: 'Qompos: Hourly Peak Sales Radar & Staff Shift Planner',
     project: 'Qompos POS Manager',
     category: 'interaction',
     categoryLabel: 'Operations Analytics',
@@ -526,7 +526,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'qoodz-merchant-portal',
-    title: 'Qoodz — Merchant Offer & Multi-Branch Command Portal',
+    title: 'Qoodz: Merchant Offer & Multi-Branch Command Portal',
     project: 'Qoodz Merchant',
     category: 'dashboard',
     categoryLabel: 'Enterprise Web Portal',
@@ -617,9 +617,6 @@ export const DesignGallery: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-4 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-bold uppercase tracking-wider">
-              <span>DESIGN CRAFT &amp; SCREEN SHOWCASE</span>
-            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
               Interactive Screen &amp; UI Gallery
             </h2>

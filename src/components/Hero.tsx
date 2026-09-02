@@ -190,7 +190,7 @@ export const Hero: React.FC<HeroProps> = ({
               </h1>
 
               <p className="hero-subtext text-base sm:text-lg text-zinc-200 font-normal leading-relaxed max-w-2xl">
-                Turning complex business models into simple, habit-forming apps. Over 4 years designing high-impact platforms across the GCC—blending user psychology, fast prototyping, and clean design execution.
+                Turning complex business models into simple, habit-forming apps. Over 4 years designing high-impact platforms across the GCC, blending user psychology, fast prototyping, and clean design execution.
               </p>
             </div>
 
@@ -198,7 +198,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <button
                 onClick={onExploreWork}
-                className="hero-cta-btn inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-zinc-950 text-sm font-bold hover:bg-zinc-100 transition-colors shadow-lg shadow-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="hero-cta-btn inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-zinc-950 text-sm font-bold hover:bg-zinc-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <span>View Selected Work</span>
                 <ArrowDown className="w-4 h-4" />
@@ -206,7 +206,7 @@ export const Hero: React.FC<HeroProps> = ({
 
               <button
                 onClick={onOpenContact}
-                className="hero-cta-btn inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 text-zinc-950 text-sm font-bold hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20"
+                className="hero-cta-btn inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 text-zinc-950 text-sm font-bold hover:bg-emerald-400 transition-colors"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Let&apos;s Talk About Your Project</span>
@@ -274,7 +274,7 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800">
                 <Image
                   src="/anas-elawdy.png"
-                  alt="Anas Elawdy — Product UI/UX Designer"
+                  alt="Anas Elawdy: Product UI/UX Designer"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"
                   priority

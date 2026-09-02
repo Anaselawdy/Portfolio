@@ -95,7 +95,7 @@ export const ContactSection: React.FC = () => {
 
   // Direct Mailto with custom subject and body
   const getMailtoUrl = () => {
-    const subject = encodeURIComponent(`Project Inquiry: ${selectedService} — via Portfolio`);
+    const subject = encodeURIComponent(`Project Inquiry: ${selectedService} - via Portfolio`);
     const body = encodeURIComponent(
       `Hi Anas,\n\nI'm interested in collaborating on a project.\n\nProject Scope: ${selectedService}\nTarget Timeline: ${selectedTimeline}\n\nLooking forward to hearing from you!`
     );
@@ -122,9 +122,6 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-            <span>START A COLLABORATION</span>
-          </div>
           <h2 className="contact-header-item text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
             Have a project in mind? Let&apos;s build something high-impact.
           </h2>
@@ -160,7 +157,7 @@ export const ContactSection: React.FC = () => {
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between p-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors shadow-lg shadow-emerald-600/20"
+                  className="w-full flex items-center justify-between p-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors"
                 >
                   <div className="flex items-center gap-2.5">
                     <MessageSquare className="w-5 h-5" />
@@ -298,7 +295,7 @@ export const ContactSection: React.FC = () => {
                           onClick={() => setSelectedService(serv)}
                           className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-colors border ${
                             selectedService === serv
-                              ? 'bg-emerald-500 text-zinc-950 font-bold border-emerald-400 shadow-md shadow-emerald-500/20'
+                              ? 'bg-emerald-500 text-zinc-950 font-bold border-emerald-400'
                               : 'bg-zinc-950 text-zinc-300 hover:text-white hover:bg-zinc-800 border-zinc-800'
                           }`}
                         >
@@ -372,7 +369,7 @@ export const ContactSection: React.FC = () => {
 
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-xl bg-white text-zinc-950 font-bold text-sm sm:text-base hover:bg-zinc-100 transition-colors flex items-center justify-center gap-2 shadow-xl shadow-white/5"
+                      className="w-full py-4 rounded-xl bg-white text-zinc-950 font-bold text-sm sm:text-base hover:bg-zinc-100 transition-colors flex items-center justify-center gap-2"
                     >
                       <Send className="w-4 h-4" />
                       <span>Send Project Brief to Anas</span>
