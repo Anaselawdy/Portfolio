@@ -4,6 +4,8 @@ import React, { useState, useRef } from 'react';
 import { Mail, Copy, Check, Send, ArrowUpRight, Phone, MessageSquare, Clock, ShieldCheck, Globe, Sparkles } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { gsap, useGSAP } from '../lib/gsap';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
 
 export const ContactSection: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -333,25 +335,23 @@ export const ContactSection: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <label className="text-xs font-semibold text-zinc-300">Your Name *</label>
-                        <input
+                        <Input
                           type="text"
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="e.g. Sarah Al-Otaibi"
-                          className="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-emerald-400"
                         />
                       </div>
 
                       <div className="space-y-1.5">
                         <label className="text-xs font-semibold text-zinc-300">Email Address *</label>
-                        <input
+                        <Input
                           type="email"
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="sarah@company.com"
-                          className="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-emerald-400"
                         />
                       </div>
                     </div>
@@ -367,13 +367,14 @@ export const ContactSection: React.FC = () => {
                       />
                     </div>
 
-                    <button
+                    <Button
                       type="submit"
-                      className="w-full py-4 rounded-xl bg-white text-zinc-950 font-bold text-sm sm:text-base hover:bg-zinc-100 transition-colors flex items-center justify-center gap-2"
+                      size="lg"
+                      className="w-full h-13 rounded-xl bg-white text-zinc-950 font-bold text-sm sm:text-base hover:bg-zinc-100 transition-colors flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <Send className="w-4 h-4" />
+                      <Send className="size-4" />
                       <span>Send Project Brief to Anas</span>
-                    </button>
+                    </Button>
                   </div>
                 </form>
               )}
