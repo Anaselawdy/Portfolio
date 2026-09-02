@@ -612,25 +612,24 @@ export const DesignGallery: React.FC = () => {
   };
 
   return (
-    <section id="gallery" className="py-24 border-t border-white/[0.08] relative">
+    <section id="gallery" className="py-24 border-t border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-cyan-400">
-              <LayoutGrid className="w-3.5 h-3.5" />
+          <div className="space-y-4 max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-bold uppercase tracking-wider">
               <span>DESIGN CRAFT &amp; SCREEN SHOWCASE</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Interactive Design Gallery
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+              Interactive Screen &amp; UI Gallery
             </h2>
-            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            <p className="text-zinc-200 text-base sm:text-lg leading-relaxed">
               Explore individual mobile screens, enterprise dashboards, and micro-interactions designed for Qoodz, PWC AI, ChildRoo, and Qompos. Click any screen to open the design inspector.
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-zinc-900/80 p-1.5 rounded-2xl border border-white/10 self-start md:self-auto">
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap items-center gap-2">
             {[
               { id: 'all' as const, label: 'All Designs (8)' },
               { id: 'mobile' as const, label: 'Mobile Apps' },
@@ -640,10 +639,10 @@ export const DesignGallery: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
                   activeCategory === tab.id
-                    ? 'bg-white text-zinc-950 font-semibold shadow-sm'
-                    : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
+                    ? 'bg-white text-zinc-950 shadow-md'
+                    : 'bg-zinc-900 text-zinc-200 hover:text-white hover:bg-zinc-800 border border-zinc-800'
                 }`}
               >
                 {tab.label}

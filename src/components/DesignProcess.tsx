@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Search, GitBranch, LayoutGrid, Layers, CheckCircle, BarChart3, ArrowRight } from 'lucide-react';
+import { GitBranch, Search, LayoutGrid, Layers, BarChart3, ArrowRight, ShieldCheck } from 'lucide-react';
 import { gsap, useGSAP } from '../lib/gsap';
 
 export const DesignProcess: React.FC = () => {
@@ -16,10 +16,10 @@ export const DesignProcess: React.FC = () => {
           start: 'top 80%',
           once: true,
         },
-        y: 20,
+        y: 24,
         opacity: 0,
         stagger: 0.1,
-        duration: 0.7,
+        duration: 0.6,
         ease: 'power3.out',
       });
 
@@ -43,55 +43,59 @@ export const DesignProcess: React.FC = () => {
   const steps = [
     {
       num: '01',
-      title: 'Brief Deconstruction & Flow Mapping',
-      desc: 'Dissecting core user and business goals before touching visual tools. Mapping happy paths, empty states, and validation edge cases.',
+      title: 'De-Risk & Business Strategy',
+      subtitle: 'Save Thousands in Engineering Rework',
+      desc: 'Before touching Figma or writing code, we dissect your real business model, customer pain points, and edge cases to ensure we build the right thing first.',
       icon: GitBranch,
-      deliverables: ['User Flow Maps', 'Edge Case Matrix', 'Information Architecture'],
+      deliverables: ['Product Journey Maps', 'Edge-Case Architecture', 'Executive Goal Matrix'],
     },
     {
       num: '02',
-      title: 'Pattern Intelligence & Synthesis',
-      desc: 'Extracting high-converting interaction models from top-tier products via Mobbin and UX research literature.',
+      title: 'Borrow Proven Patterns',
+      subtitle: 'Implement What Already Converts',
+      desc: 'We analyze top-tier global and GCC products to extract high-converting UX models. Users already know how to use your app on day one without tutorials.',
       icon: Search,
-      deliverables: ['Competitive UX Audit', 'Interaction Benchmarks', 'Mental Model Strategy'],
+      deliverables: ['Competitive UX Audit', 'Mental Model Benchmarking', 'Conversion Flow Strategy'],
     },
     {
       num: '03',
-      title: 'High-Density Wireframing & Prototyping',
-      desc: 'Rapidly stress-testing complex data layouts and state transitions with realistic content and micro-interactions.',
+      title: 'Rapid Interactive Prototypes',
+      subtitle: 'Test Real Feedback in Days',
+      desc: 'Turning raw concepts into realistic, clickable prototypes with real Arabic & English content so stakeholders, investors, and users can test it immediately.',
       icon: LayoutGrid,
-      deliverables: ['Interactive Prototypes', 'Responsive Layouts', 'State Flow Specs'],
+      deliverables: ['Clickable Prototypes', 'Mobile & Web Responsive Specs', 'User Validation Tests'],
     },
     {
       num: '04',
-      title: 'Design System & Token Architecture',
-      desc: 'Codifying styles into semantic tokens, accessible component primitives, and automated developer handoff docs.',
+      title: 'Developer Handoff With Zero Guesswork',
+      subtitle: '100% Velocity for Your Engineers',
+      desc: 'Complete design tokens, state variants (empty, loading, error, success), and pixel-perfect guidelines so your engineers build fast with zero friction.',
       icon: Layers,
-      deliverables: ['Figma Variables', 'Token Pipelines', 'WCAG 2.2 AA Audit'],
+      deliverables: ['Figma Token Architecture', 'Zero-Hand-Waving Specs', 'State Variant Matrices'],
     },
     {
       num: '05',
-      title: 'Usability Testing & Business Telemetry',
-      desc: 'Validating with real end-users, tracking task completion times, and measuring conversion and retention uplift.',
+      title: 'Post-Launch Telemetry & ROI',
+      subtitle: 'Continuously Measure & Optimize',
+      desc: 'Design is verified by results. We look at real user drop-offs, task completion times, and conversion rates to keep lifting business revenue.',
       icon: BarChart3,
-      deliverables: ['Usability Study Reports', 'Telemetry Dashboards', 'Optimization Iterations'],
+      deliverables: ['Usability Study Reports', 'Conversion Telemetry', 'Iterative UX Tweaks'],
     },
   ];
 
   return (
-    <section ref={containerRef} id="process" className="py-24 border-t border-white/[0.08] relative">
+    <section ref={containerRef} id="process" className="py-24 border-t border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
-        <div className="space-y-3 max-w-2xl">
-          <div className="process-header-item inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-emerald-400">
-            <CheckCircle className="w-3.5 h-3.5" />
-            <span>METHODOLOGY &amp; PHILOSOPHY</span>
+        <div className="space-y-4 max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+            <span>HOW I WORK</span>
           </div>
-          <h2 className="process-header-item text-3xl sm:text-4xl font-bold tracking-tight text-white">
-            How I design scalable, high-impact products.
+          <h2 className="process-header-item text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+            How I turn product ambiguity into high-revenue shipped software.
           </h2>
-          <p className="process-header-item text-zinc-400 text-sm sm:text-base leading-relaxed">
-            A structured framework designed to move from ambiguity to shipping production-ready interfaces fast without sacrificing depth or craft.
+          <p className="process-header-item text-zinc-200 text-base sm:text-lg leading-relaxed">
+            A structured framework designed to move from napkin sketch to production-ready interfaces fast without sacrificing depth, craft, or business ROI.
           </p>
         </div>
 
@@ -102,36 +106,39 @@ export const DesignProcess: React.FC = () => {
             return (
               <div
                 key={step.num}
-                className="process-card p-6 sm:p-8 rounded-2xl bg-zinc-900/40 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between space-y-6 group"
+                className="process-card p-6 sm:p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-all flex flex-col justify-between space-y-6 group shadow-lg"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold font-mono text-zinc-600 group-hover:text-emerald-400 transition-colors">
+                    <span className="text-3xl font-bold font-mono text-zinc-600 group-hover:text-emerald-400 transition-colors">
                       {step.num}
                     </span>
-                    <div className="w-10 h-10 rounded-xl bg-zinc-800/80 border border-white/10 flex items-center justify-center text-zinc-300 group-hover:text-white transition-colors">
-                      <Icon className="w-5 h-5" />
+                    <Icon className="w-6 h-6 text-zinc-400 group-hover:text-emerald-400 transition-colors" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                      {step.title}
+                    </h3>
+                    <div className="text-xs font-bold text-emerald-400 pt-0.5">
+                      {step.subtitle}
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white tracking-tight">
-                    {step.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                  <p className="text-sm text-zinc-200 leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/5 space-y-2">
-                  <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">
-                    Key Deliverables:
+                <div className="pt-4 border-t border-zinc-800 space-y-2">
+                  <div className="text-xs text-zinc-400 font-semibold uppercase tracking-wider">
+                    Executive Deliverables:
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {step.deliverables.map((d) => (
                       <span
                         key={d}
-                        className="px-2 py-0.5 rounded bg-zinc-800/60 border border-white/5 text-[10px] font-mono text-zinc-300"
+                        className="px-2.5 py-1 rounded-md bg-zinc-950 border border-zinc-800 text-xs font-medium text-zinc-200"
                       >
                         {d}
                       </span>
@@ -143,21 +150,22 @@ export const DesignProcess: React.FC = () => {
           })}
 
           {/* Callout Card */}
-          <div className="process-card p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950/30 border border-emerald-500/20 flex flex-col justify-between space-y-6">
+          <div className="process-card p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/30 flex flex-col justify-between space-y-6 shadow-xl">
             <div className="space-y-3">
-              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
-                CORE PRINCIPLE
-              </span>
-              <h3 className="text-xl font-bold text-white">
-                Engineered for Developer Velocity &amp; User Trust
+              <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4" />
+                <span>MY CORE GUARANTEE</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white">
+                Engineered for Developer Speed &amp; User Trust
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                Design is not done when the Figma file looks pretty. It is done when the engineered interface is responsive, accessible, resilient to failure states, and measurably moves business metrics.
+              <p className="text-sm text-zinc-200 leading-relaxed">
+                Design is not done when Figma looks pretty. It is done when the engineered app is fast, accessible, resilient to failure states, and measurably moves business metrics.
               </p>
             </div>
 
-            <div className="text-xs font-mono text-emerald-400 flex items-center gap-2">
-              <span>Zero-hand-waving specs</span>
+            <div className="text-sm font-bold text-emerald-400 flex items-center gap-2">
+              <span>Zero hand-waving • Shipped with pride</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </div>

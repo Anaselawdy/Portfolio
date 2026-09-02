@@ -29,63 +29,63 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-white/[0.08] bg-[#07080b] py-16 text-zinc-400 text-xs">
+    <footer className="border-t border-zinc-800 bg-[#090a0f] py-16 text-zinc-300 text-xs sm:text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Top Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 text-white font-bold text-base tracking-tight">
+          <div className="space-y-2 max-w-lg">
+            <div className="flex items-center gap-2 text-white font-bold text-lg tracking-tight">
               <span>{PERSONAL_INFO.name}</span>
               <span className="text-zinc-600">•</span>
-              <span className="text-zinc-400 font-normal text-xs">{PERSONAL_INFO.title}</span>
+              <span className="text-zinc-300 font-medium text-sm">{PERSONAL_INFO.title}</span>
             </div>
-            <p className="text-zinc-500 text-xs max-w-md">
-              Helping startups and companies create intuitive, high-converting digital experiences. Collaborations across UAE, Saudi Arabia, Iraq &amp; Korea.
+            <p className="text-zinc-300 text-sm leading-relaxed">
+              Partnering with ambitious founders and engineering teams across Saudi Arabia, the UAE, and global markets to build intuitive, revenue-generating digital products.
             </p>
           </div>
 
           {/* Time & Back to Top */}
           <div className="flex flex-wrap items-center gap-4">
             {currentTime && (
-              <div className="px-3 py-1.5 rounded-lg bg-zinc-900 border border-white/10 font-mono text-[11px] text-zinc-300 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-zinc-200 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <span>Dubai (UTC+4): {currentTime}</span>
               </div>
             )}
 
             <button
               onClick={scrollToTop}
-              className="p-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-white/10 transition-colors flex items-center gap-1.5"
+              className="px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white border border-zinc-800 transition-colors flex items-center gap-2 text-xs font-semibold"
               aria-label="Back to top"
             >
               <ArrowUp className="w-3.5 h-3.5" />
-              <span className="font-mono text-[11px]">Back to top</span>
+              <span>Back to Top</span>
             </button>
           </div>
         </div>
 
         {/* Bottom Nav Links & Copyright */}
-        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[11px] text-zinc-500 font-mono">
+        <div className="pt-8 border-t border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-zinc-400">
           <div>
-            &copy; {new Date().getFullYear()} Anas Elawdy. All rights reserved.
+            &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. Designed &amp; Crafted for High Business Impact.
           </div>
 
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6 text-zinc-300">
             <a
               href={PERSONAL_INFO.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-400 transition-colors flex items-center gap-1"
+              className="hover:text-emerald-400 transition-colors flex items-center gap-1 font-medium"
             >
-              <FileText className="w-3 h-3" />
-              <span>Resume</span>
+              <FileText className="w-3.5 h-3.5" />
+              <span>Resume (PDF)</span>
               <ArrowUpRight className="w-3 h-3" />
             </a>
             <a
               href={PERSONAL_INFO.socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-zinc-300 transition-colors"
+              className="hover:text-white transition-colors font-medium"
             >
               LinkedIn
             </a>
@@ -93,15 +93,15 @@ export const Footer: React.FC = () => {
               href={PERSONAL_INFO.socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-zinc-300 transition-colors"
+              className="hover:text-white transition-colors font-medium"
             >
               GitHub Source
             </a>
             <a
               href="#work"
-              className="hover:text-zinc-300 transition-colors"
+              className="hover:text-white transition-colors font-medium"
             >
-              Projects
+              Case Studies
             </a>
           </div>
         </div>

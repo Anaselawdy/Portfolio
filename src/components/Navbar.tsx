@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Menu, X, FileText } from 'lucide-react';
+import { ArrowUpRight, Menu, X, FileText, Sparkles } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['work', 'gallery', 'design-system', 'process', 'experience', 'about', 'contact'];
+      const sections = ['work', 'gallery', 'process', 'experience', 'about', 'contact'];
       const scrollPosition = window.scrollY + 140;
 
       for (const section of sections) {
@@ -39,9 +39,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   }, []);
 
   const navLinks = [
-    { name: 'Projects', href: '#work', id: 'work' },
-    { name: 'Design Gallery', href: '#gallery', id: 'gallery' },
-    { name: 'Design Lab', href: '#design-system', id: 'design-system' },
+    { name: 'Selected Work', href: '#work', id: 'work' },
+    { name: 'Screen Gallery', href: '#gallery', id: 'gallery' },
     { name: 'Process', href: '#process', id: 'process' },
     { name: 'Experience', href: '#experience', id: 'experience' },
   ];
@@ -53,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0b0c10]/90 backdrop-blur-md border-b border-white/[0.08] py-3 shadow-xl shadow-black/30'
+          ? 'bg-[#090a0f]/95 backdrop-blur-md border-b border-zinc-800 py-3 shadow-xl'
           : 'bg-transparent py-5'
       }`}
     >
@@ -64,36 +63,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             href="#"
             className="group flex items-center gap-3 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-xl p-1"
           >
-            <div className="w-9 h-9 rounded-xl bg-zinc-900 border border-white/15 flex items-center justify-center font-mono font-bold text-sm tracking-tight text-white group-hover:border-emerald-500/50 group-hover:bg-emerald-500/10 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center font-bold text-sm tracking-tight text-white group-hover:border-zinc-700 transition-colors">
               AE
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-semibold tracking-tight text-white group-hover:text-zinc-200 transition-colors flex items-center gap-1.5">
+              <span className="text-sm font-bold tracking-tight text-white group-hover:text-zinc-200 transition-colors flex items-center gap-1.5">
                 <span>{PERSONAL_INFO.name}</span>
-                <span className="text-xs">👋</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400" title="Available for projects" />
               </span>
-              <span className="text-[11px] text-zinc-400 font-medium hidden sm:inline-block">
+              <span className="text-xs text-zinc-300 font-medium hidden sm:inline-block">
                 {PERSONAL_INFO.title}
               </span>
             </div>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-zinc-900/70 border border-white/10 p-1.5 rounded-full backdrop-blur-md">
+          {/* Desktop Navigation (Heuristic 1: Visibility of Status) */}
+          <nav className="hidden md:flex items-center gap-1 bg-zinc-900 border border-zinc-800 p-1.5 rounded-full shadow-md">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
-                    isActive ? 'text-white font-semibold' : 'text-zinc-400 hover:text-zinc-200'
+                  className={`relative px-4 py-2 text-xs font-medium rounded-full transition-colors ${
+                    isActive ? 'text-white font-bold' : 'text-zinc-300 hover:text-white'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute inset-0 bg-white/10 rounded-full border border-white/10"
+                      className="absolute inset-0 bg-zinc-800 rounded-full border border-zinc-700"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -103,42 +102,39 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             })}
           </nav>
 
-          {/* Availability, Resume & CTA */}
+          {/* Direct Actions */}
           <div className="hidden lg:flex items-center gap-3">
             <a
               href={PERSONAL_INFO.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-white/10 text-xs font-medium transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white border border-zinc-800 text-xs font-medium transition-colors"
             >
               <FileText className="w-3.5 h-3.5 text-zinc-400" />
-              <span>Resume</span>
-              <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+              <span>Resume (PDF)</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
             </a>
 
             <button
               onClick={onOpenContact}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-zinc-950 text-xs font-semibold hover:bg-zinc-200 transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-zinc-950 text-xs font-bold hover:bg-zinc-100 transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              <span>Get in Touch</span>
+              <span>Start a Project</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
-            <a
-              href={PERSONAL_INFO.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-2.5 py-1.5 rounded-lg bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium flex items-center gap-1"
+            <button
+              onClick={onOpenContact}
+              className="px-3 py-1.5 rounded-lg bg-white text-zinc-950 text-xs font-bold"
             >
-              <FileText className="w-3 h-3" />
-              <span>CV</span>
-            </a>
+              Contact
+            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-zinc-900 border border-white/10 text-zinc-300 hover:text-white"
+              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-200 hover:text-white"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -154,39 +150,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-b border-white/10 bg-[#0b0c10]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-4 overflow-hidden"
+            className="md:hidden border-b border-zinc-800 bg-zinc-950/98 backdrop-blur-xl px-4 py-6 space-y-4"
           >
-            <div className="flex flex-col space-y-1">
+            <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2.5 text-sm font-medium rounded-xl text-zinc-300 hover:text-white hover:bg-white/[0.06] transition-colors"
+                  className="px-4 py-3 rounded-xl text-sm font-medium text-zinc-200 hover:text-white hover:bg-zinc-900 transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
             </div>
 
-            <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+            <div className="pt-4 border-t border-zinc-800 flex flex-col gap-3">
               <a
                 href={PERSONAL_INFO.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-zinc-400 hover:text-white flex items-center gap-1 font-mono"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-zinc-900 text-zinc-200 text-sm font-medium border border-zinc-800"
               >
-                <FileText className="w-3.5 h-3.5" />
-                <span>View Full Resume ↗</span>
+                <FileText className="w-4 h-4 text-zinc-400" />
+                <span>Download Resume (PDF)</span>
               </a>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="px-4 py-2 rounded-xl bg-white text-zinc-950 text-xs font-semibold"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white text-zinc-950 text-sm font-bold"
               >
-                Let&apos;s Talk
+                <span>Start a Project</span>
+                <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>
           </motion.div>
