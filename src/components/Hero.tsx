@@ -4,7 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowDown, FileText, ArrowUpRight, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { motion, useMotionValue, useSpring, useTransform, animate, Variants } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, Variants } from 'framer-motion';
+import { animate, scroll } from 'motion';
 
 interface HeroProps {
   onExploreWork: () => void;
@@ -74,6 +75,14 @@ export const Hero: React.FC<HeroProps> = ({
     y.set(0.5);
   };
 
+  // Scroll Animation Setup
+  useEffect(() => {
+    // Fades out and moves up the hero content as you scroll down
+    scroll(animate('#hero-content', { y: [0, -150], opacity: [1, 0] }), {
+      offset: ['start start', 'end start'],
+    });
+  }, []);
+
   // Entrance Animations Setup
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -104,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({
       id="hero"
       className="relative pt-32 pb-20 md:pt-36 md:pb-28 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="hero-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           {/* Left Column: Bio & Value Proposition (7 cols) */}
           <motion.div 
