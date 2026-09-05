@@ -138,23 +138,29 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Action Buttons */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3.5 pt-2">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={onExploreWork}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-zinc-950 text-sm font-bold hover:bg-zinc-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <span>View Selected Work</span>
                 <ArrowDown className="w-4 h-4" />
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={onOpenContact}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 text-zinc-950 text-sm font-bold hover:bg-emerald-400 transition-colors"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Let&apos;s Talk About Your Project</span>
-              </button>
+              </motion.button>
 
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 href={PERSONAL_INFO.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -163,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <FileText className="w-4 h-4 text-emerald-400" />
                 <span>Resume (PDF)</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
-              </a>
+              </motion.a>
             </motion.div>
 
             {/* Impact Metrics Row */}

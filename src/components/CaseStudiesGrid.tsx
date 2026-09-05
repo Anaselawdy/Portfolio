@@ -203,7 +203,9 @@ export const CaseStudiesGrid: React.FC<CaseStudiesGridProps> = ({ onSelectCaseSt
           {/* Filter Pills */}
           <div className="cs-header-item flex flex-wrap items-center gap-2">
             {categories.map((cat) => (
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
@@ -213,7 +215,7 @@ export const CaseStudiesGrid: React.FC<CaseStudiesGridProps> = ({ onSelectCaseSt
                 }`}
               >
                 {cat.label}
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -227,6 +229,8 @@ export const CaseStudiesGrid: React.FC<CaseStudiesGridProps> = ({ onSelectCaseSt
                 initial={{ opacity: 0, scale: 0.97 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.97 }}
+                whileHover={{ y: -4, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.25 }}
                 key={project.id}
                 onClick={() => onSelectCaseStudy(project)}
