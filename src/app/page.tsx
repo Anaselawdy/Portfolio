@@ -10,6 +10,7 @@ import { ExperienceTimeline } from '../components/ExperienceTimeline';
 import { Testimonials } from '../components/Testimonials';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
+import { NeatBackground } from '../components/NeatBackground';
 import { CaseStudy } from '../types/portfolio';
 import { smoothScrollTo } from '../lib/gsap';
 
@@ -21,7 +22,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-[#f4f4f6] flex flex-col selection:bg-emerald-500/30 selection:text-white relative">
+    <div className="min-h-screen bg-transparent text-[#f4f4f6] flex flex-col selection:bg-emerald-500/30 selection:text-white relative">
+      <NeatBackground />
       {/* Navigation */}
       <Navbar onOpenContact={() => scrollToSection('contact')} />
 
