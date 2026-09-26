@@ -87,8 +87,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             }}
             className="group flex items-center gap-3 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-xl p-1 cursor-pointer"
           >
-            <div className="size-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center font-bold text-sm tracking-tight text-white group-hover:border-zinc-700 transition-colors">
-              AE
+            <div className="size-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center font-bold text-sm tracking-tight text-white group-hover:border-zinc-700 transition-colors overflow-hidden">
+              <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-bold tracking-tight text-white group-hover:text-zinc-200 transition-colors flex items-center gap-1.5">
