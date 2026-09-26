@@ -229,7 +229,7 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Inner Image Container */}
               <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800 pointer-events-none">
                 <Image
-                  src="/anas-elawdy.png"
+                  src="/logo.jpg"
                   alt="Anas Elawdy: Product UI/UX Designer"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"
