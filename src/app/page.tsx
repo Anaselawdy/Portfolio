@@ -10,9 +10,14 @@ import { ExperienceTimeline } from '../components/ExperienceTimeline';
 import { Testimonials } from '../components/Testimonials';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
-import { NeatBackground } from '../components/NeatBackground';
+import dynamic from 'next/dynamic';
 import { CaseStudy } from '../types/portfolio';
 import { smoothScrollTo } from '../lib/gsap';
+
+const NeatBackground = dynamic(() => import('../components/NeatBackground').then((mod) => mod.NeatBackground), {
+  loading: () => <div className="fixed inset-0 bg-[#090a0f] pointer-events-none" />,
+  ssr: false,
+});
 
 export default function Home() {
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudy | null>(null);
@@ -28,7 +33,7 @@ export default function Home() {
       <Navbar onOpenContact={() => scrollToSection('contact')} />
 
       {/* Main Content Sections */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col relative z-10">
         <Hero
           onExploreWork={() => scrollToSection('work')}
           onOpenContact={() => scrollToSection('contact')}

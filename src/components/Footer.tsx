@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-zinc-800 bg-[#090a0f] py-16 text-zinc-300 text-xs sm:text-sm">
+    <footer className="border-t border-zinc-800 bg-[#090a0f] py-16 text-zinc-300 text-xs sm:text-sm relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Top Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
