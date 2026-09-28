@@ -10,9 +10,15 @@ export const NeatBackground: React.FC = () => {
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    // Let browser layout complete before initializing WebGL
+    // Explicitly set canvas HTML buffer dimensions so camera doesn't collapse to 300x150
+    canvasRef.current.width = window.innerWidth;
+    canvasRef.current.height = window.innerHeight;
+
     const frameId = requestAnimationFrame(() => {
       if (!canvasRef.current) return;
+      canvasRef.current.width = window.innerWidth;
+      canvasRef.current.height = window.innerHeight;
+
       gradientRef.current = new NeatGradient({
         ref: canvasRef.current,
         colors: [
