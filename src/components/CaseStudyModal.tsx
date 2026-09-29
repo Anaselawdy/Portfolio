@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, Lightbulb, Compass, Globe, ArrowRight, ArrowLeft } from 'lucide-react';
 import { CaseStudy } from '../types/portfolio';
-import { CASE_STUDIES } from '../data/portfolioData';
+import { CASE_STUDIES } from '../data/projectsData';
 import {
   Dialog,
   DialogPopup,
@@ -28,8 +28,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
   onClose,
   onSelectAnotherStudy,
 }) => {
-  type ModalTab = 'overview' | 'research' | 'solution' | 'impact';
-  const [activeTab, setActiveTab] = useState<ModalTab>('overview');
+  type ModalTab = 'problem' | 'process' | 'solution' | 'impact';
+  const [activeTab, setActiveTab] = useState<ModalTab>('problem');
 
   if (!caseStudy) return null;
 
@@ -102,17 +102,17 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             className="space-y-8"
           >
             <TabsList variant="line" className="overflow-x-auto w-full justify-start pb-1">
-              <TabsTab variant="line" value="overview">
-                1. The Business Challenge
+              <TabsTab variant="line" value="problem">
+                1. Problem
               </TabsTab>
-              <TabsTab variant="line" value="research">
-                2. What Users Needed
+              <TabsTab variant="line" value="process">
+                2. Process
               </TabsTab>
               <TabsTab variant="line" value="solution">
-                3. The Design Solution
+                3. Solution
               </TabsTab>
               <TabsTab variant="line" value="impact">
-                4. Business Results &amp; ROI
+                4. Impact
               </TabsTab>
             </TabsList>
 

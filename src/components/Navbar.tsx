@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { ArrowUpRight, Menu, X, FileText } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
@@ -11,18 +12,34 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
+  const pathname = usePathname();
+  const router = useRouter();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
 
   const navLinks = [
-    { name: 'Selected Work', href: '#work', id: 'work' },
-    { name: 'Process', href: '#process', id: 'process' },
-    { name: 'Experience', href: '#experience', id: 'experience' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
+    { name: 'Selected Work', href: '/#work', hash: '#work', id: 'work' },
+    { name: 'Projects', href: '/projects', id: 'projects' },
+    { name: 'Process', href: '/#process', hash: '#process', id: 'process' },
+    { name: 'Experience', href: '/#experience', hash: '#experience', id: 'experience' },
+    { name: 'Contact', href: '/#contact', hash: '#contact', id: 'contact' },
   ];
 
   useEffect(() => {
+    // If on the /projects page or any project detail page, highlight the Projects nav link
+    if (pathname === '/projects' || pathname?.startsWith('/projects/')) {
+      setActiveSection('projects');
+      setIsScrolled(true);
+      return;
+    }
+
+    if (pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
@@ -55,23 +72,55 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
 
-  const handleNavClick = (e: React.MouseEvent, href: string) => {
+  const handleNavClick = (e: React.MouseEvent, link: typeof navLinks[0]) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    smoothScrollTo(href, 85);
+
+    if (link.id === 'projects') {
+      if (pathname !== '/projects') {
+        router.push('/projects');
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    // Hash links
+    if (pathname === '/') {
+      if (link.hash) {
+        smoothScrollTo(link.hash, 85);
+      }
+    } else {
+      router.push(link.href);
+    }
   };
 
   const handleContactClick = () => {
     setMobileMenuOpen(false);
-    smoothScrollTo('#contact', 85);
+    if (onOpenContact && pathname === '/') {
+      onOpenContact();
+    } else if (pathname === '/') {
+      smoothScrollTo('#contact', 85);
+    } else {
+      router.push('/#contact');
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (pathname === '/') {
+      smoothScrollTo(0, 0, 1.0);
+    } else {
+      router.push('/');
+    }
   };
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
+        isScrolled || pathname !== '/'
           ? 'bg-[#090a0f]/95 backdrop-blur-md border-b border-zinc-800 py-3 shadow-xl'
           : 'bg-transparent py-5'
       }`}
@@ -80,11 +129,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         <div className="flex items-center justify-between">
           {/* Brand Mark */}
           <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              smoothScrollTo(0, 0, 1.0);
-            }}
+            href="/"
+            onClick={handleLogoClick}
             className="group flex items-center gap-3 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-xl p-1 cursor-pointer"
           >
             <div className="size-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center font-bold text-sm tracking-tight text-white group-hover:border-zinc-700 transition-colors overflow-hidden">
@@ -110,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   <a
                     key={link.name}
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    onClick={(e) => handleNavClick(e, link)}
                     className={`relative px-4 py-2 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
                       isActive ? 'text-white' : 'text-zinc-300 hover:text-white'
                     }`}
@@ -184,7 +230,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  onClick={(e) => handleNavClick(e, link)}
                   className="px-4 py-3 rounded-xl text-sm font-medium text-zinc-200 hover:text-white hover:bg-zinc-900 transition-colors cursor-pointer"
                 >
                   {link.name}

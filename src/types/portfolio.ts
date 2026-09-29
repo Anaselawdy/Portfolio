@@ -8,6 +8,8 @@ export interface Metric {
 
 export interface CaseStudy {
   id: string;
+  slug: string;
+  externalUrl?: string;
   title: string;
   client: string;
   category: ProjectCategory;
@@ -19,6 +21,10 @@ export interface CaseStudy {
   platform: string;
   summary: string;
   heroImage: string;
+  imageUrl?: string;
+  thumbnailUrl?: string;
+  isHighImpact?: boolean;
+  impactBadge?: string;
   tags: string[];
   metrics: Metric[];
   overview: {
